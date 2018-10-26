@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 // Containers
 import { PassengerDashboardComponent } from './containers/passenger-dashboard.component';
@@ -8,13 +9,20 @@ import { PassengerDashboardComponent } from './containers/passenger-dashboard.co
 import { PassengerCountComponent } from './components/passenger-count/passenger-count.component';
 import { PassengerDetailComponent } from './components/passenger-detail/passenger-detail.component';
 
+// Service
+import { PassengerDashboardService } from './passenger-dashboard.service'
+
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpModule
   ],
   declarations: [PassengerDashboardComponent, PassengerCountComponent, PassengerDetailComponent],
   exports: [
     PassengerDashboardComponent
+  ],
+  providers: [
+    PassengerDashboardService
   ]
 })
 export class PassengerDashboardModule { }
