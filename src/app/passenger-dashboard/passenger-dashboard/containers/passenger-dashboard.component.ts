@@ -9,7 +9,6 @@ import { Passenger } from '../models/passenger.interface';
 })
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
-  constructor() { }
 
   ngOnInit() {
     this.passengers = [{
@@ -44,5 +43,22 @@ export class PassengerDashboardComponent implements OnInit {
       children: null
     }];
   }
+
+  handleEdit(event: Passenger) {
+    this.passengers = this.passengers.map((passenger: Passenger) => {
+      if (passenger.id === event.id) {
+        passenger = Object.assign({}, passenger, event);
+      }
+      return passenger;
+    });
+  }
+
+  handleRemove(event: Passenger) {
+    this.passengers = this.passengers.filter((passenger: Passenger) => {
+      return passenger.id !== event.id;
+    });
+  }
+
+  constructor() { }
 
 }
