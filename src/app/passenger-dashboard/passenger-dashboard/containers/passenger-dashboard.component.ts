@@ -1,4 +1,3 @@
-import { subscribe } from 'rxjs';
 import { PassengerDashboardService } from './../passenger-dashboard.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,9 +12,7 @@ export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
 
   ngOnInit() {
-    this.passengerService
-      .getPassengers()
-      .subscribe((data: Passenger[]) => this.passengers = data)
+    this.passengers = this.passengerService.getPassengers();
   }
 
   handleEdit(event: Passenger) {
